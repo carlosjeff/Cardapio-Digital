@@ -1,0 +1,33 @@
+.input{
+    padding: .8em;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid var(--grey-500);
+    
+    width: 100%;
+}
+
+.input:focus-visible{
+    outline: none;   
+    border: 1px solid var(--bluegrey-800);
+ 
+}
+
+.input-filter{
+    padding-left: 40px;
+}
+
+.input-icon{
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon::before{
+    content: "";
+    display: inline-block;
+    text-align: center;
+}

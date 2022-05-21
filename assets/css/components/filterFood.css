@@ -1,0 +1,18 @@
+.filterFood{
+    padding: 1em;
+    box-sizing: border-box;
+    background-color: var(--bluegrey-900);
+    grid-row: 1fr 1fr;
+    box-shadow: 15px 5px 20px 0px rgba(0,0,0,0.42);
+}
+
+.filterFood__title{
+    color: var(--grey-100);
+    font-size: 1.8rem;
+}
+
+.filterFood__input{
+    grid-row: 2;
+    position: relative;
+    display: none;
+}

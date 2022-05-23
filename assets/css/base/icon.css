@@ -22,3 +22,8 @@
     content:"\f002" !important;
     font-family: var(--font-icon);
 }
+
+.icon-plus::before{
+    content:"\2b" !important;
+    font-family: var(--font-icon);
+}

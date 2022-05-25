@@ -3,6 +3,9 @@
 @import url(./components/filterFood.css);
 @import url(./components/input.css);
 @import url(./components/product.css);
+@import url(./components/accordion.css);
+@import url(./components/list.css);
+@import url(./components/button.css);
 
 .main {
     grid-column: 2;

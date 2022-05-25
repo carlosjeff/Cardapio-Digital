@@ -27,3 +27,39 @@
     content:"\2b" !important;
     font-family: var(--font-icon);
 }
+
+.icon-check::before{
+    content:"\f00c" !important;
+    font-family: var(--font-icon);
+}
+
+.icon-trash::before{
+    content:"\f2ed" !important;
+    font-family: var(--font-icon);
+}
+
+.icon-edit::before{
+    content:"\f304" !important;
+    font-family: var(--font-icon);
+}
+
+.icon-arrow-left::before{
+    content:"\f104" !important;
+    font-family: var(--font-icon);
+}
+
+.icon-arrow-right::before{
+    content:"\f105" !important;
+    font-family: var(--font-icon);
+}
+
+.icon-arrow-up::before{
+    content:"\f077" !important;
+    font-family: var(--font-icon);
+}
+
+.icon-arrow-down::before{
+    content:"\f078" !important;
+    font-family: var(--font-icon);
+}
+

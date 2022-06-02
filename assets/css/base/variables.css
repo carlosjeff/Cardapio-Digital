@@ -5,15 +5,20 @@
 
     --bluegrey-50: #eceff1;
     --bluegrey-100: #cfd8dc;
+    --bluegrey-200: #b0bec5;
     --bluegrey-500: #607d8b;
     --bluegrey-600: #546e7a;
     --bluegrey-800: #37474f;
     --bluegrey-900: #263238;
 
     --blue-800: #1565c0;
+    --blue-900: #0d47a1;
 
     --deep-orange-500: #ff5722;
     --deep-orange-800: #d84315;
+
+    --green-800: #2e7d32;
+    --green-900: #1b5e20;
 
     --grey-50: #fafafa;
     --grey-100: #f5f5f5;
@@ -26,6 +31,7 @@
     --orange-800: #ef6c00;
 
     --red-800: #c62828;
+    --red-900: #b71c1c;
 
     --gradient-orange: linear-gradient(9deg, var(--orange-500) 13%, var(--orange-800) 61%);
     /* Fontes */

@@ -1,4 +1,7 @@
-export class PizzaModel{
+import {PizzaSizeModel} from './PizzaSizeModel.js'
+
+//Borda
+export class PizzaEdgeModel {
 
     #name;
     #description;
@@ -21,4 +24,5 @@ export class PizzaModel{
     get price(){
         return this.#price;
     }
+
 }

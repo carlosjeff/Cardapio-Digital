@@ -1,5 +1,5 @@
 //Sabor
-export class FlavorModel{
+export class PizzaFlavorModel{
 
     #name;
     #description;

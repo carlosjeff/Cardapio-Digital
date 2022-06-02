@@ -17,6 +17,10 @@
     border-radius: 10px 10px 0 0;
 }
 
+.accordion__action:hover{
+    cursor: pointer;
+}
+
 .accordion-disabled .accordion__action{
     border-radius: 10px !important;
 }

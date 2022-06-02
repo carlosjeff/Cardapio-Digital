@@ -67,3 +67,24 @@
 .header__link:hover::before{
     color: var(--orange-800)
 }
+
+.header-top{
+    box-sizing: border-box;
+    background-color: var(--bluegrey-900);
+    grid-row: 1;
+    /* box-shadow: 15px 5px 20px 0px rgba(0,0,0,0.42); */
+    display: grid;
+    grid-template-columns: auto 400px;
+    align-items: center;
+    padding: 0 1em;
+}
+
+.header__title{
+    color: var(--grey-100);
+    font-size: 1.8rem;
+}
+
+.header__filter-input{
+    grid-column: 2;
+    position: relative;
+}

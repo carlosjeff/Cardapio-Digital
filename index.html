@@ -37,37 +37,48 @@
     </header>
 
     <main class="main">
-        <section class="filterFood">
-            <h2 class="filterFood__title">Pizzas</h2>
-            <div class="filterFood__input">
+        <section class="header-top">
+            <h2 class="header__title">Pizzas</h2>
+            <div class="header__filter-input">
                 <input type="text" class="input input-filter ">
                 <i class="input-icon icon-search"></i>
             </div>
         </section>
         <section id="content-main">
-            <div class="accordion">
+            <!-- <div class="accordion">
                 <div class="accordion__action">
                     <h2 class="acordion__title">Tamanho</h2>
                     <i class="accordion__icon icon-arrow-up"></i>
                 </div>
                 <div class="accordion__content">
-                    <form class="form">
+                    <form class="form form-pizzaSize">
                         <div class="form__input">
-                            <label>Nome</label>
-                            <input type="text" class="input">
+                            <label class="input__label" for="name">Nome</label>
+                            <input type="text" id="name" class="input">
                         </div>
+                        <div class="form__input">
+                            <label class="input__label" for="price">Preço</label>
+                            <input type="text" id="price" class="input">
+                        </div>
+                        <div class="form__input">
+                            <label class="input__label" for="limit">Limite de Sabores</label>
+                            <input type="number" id="limit" class="input">
+                        </div>
+                        <div class="form__input">
+                            <label class="input__label" for="description">Descrição</label>
+                            <textarea type="text" id="description" class="input" rows="8"></textarea>
+                        </div>
+                        <button type="submit" class="button button-green button-icon-text icon-check form-submit">Salvar</button>
                     </form>
-                    <div>
+                    
                         <ul class="list">
                             <li class="list__header">
-                                <!-- <div class="col-1">Nome</div>
-                                <div class="col-2">Preço</div> -->
                                 <div class="list__search">
                                     <input type="text" class="input input-filter">
                                     <i class="input-icon icon-search"></i>
                                 </div>
                             </li>
-                            <li class="list__row">
+                            <li class="list__row list__row-select">
                                 <div class="col-1">Pìzza metro</div>
                                 <div class="col-2">R$ 70,00</div>
                                 <div class="col-3">
@@ -105,7 +116,7 @@
                                 <button class="button button-icon icon-arrow-right button-white"></button>
                             </li>
                         </ul>
-                    </div>
+                    
                 </div>
             </div>
             <div class="accordion accordion-disabled">
@@ -125,9 +136,10 @@
                     <h2 class="acordion__title">Adicionais</h2>
                     <i class="accordion__icon icon-arrow-down"></i>
                 </div>
-            </div>
+            </div> -->
         </section>
     </main>
+    <script src="./assets/js/main.js" type="module"></script>
 </body>
 
 </html>

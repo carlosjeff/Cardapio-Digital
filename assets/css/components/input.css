@@ -1,9 +1,9 @@
 .input{
-    padding: .8em;
+    padding: 1em;
     box-sizing: border-box;
     border-radius: 5px;
     border: 1px solid var(--grey-500);
-    
+    font-size: 1rem;
     width: 100%;
 }
 
@@ -31,4 +31,18 @@
     display: inline-block;
     text-align: center;
 }
+
+.input__label{
+    margin-bottom: .5em;
+    display: block;
+}
+
+.input-number{
+    position: relative;
+}
+
+.input-number input{
+    text-align: center;
+}
+
 

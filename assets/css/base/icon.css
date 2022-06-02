@@ -28,6 +28,11 @@
     font-family: var(--font-icon);
 }
 
+.icon-minus::before{
+    content:"\f068" !important;
+    font-family: var(--font-icon);
+}
+
 .icon-check::before{
     content:"\f00c" !important;
     font-family: var(--font-icon);

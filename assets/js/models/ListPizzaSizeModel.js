@@ -11,4 +11,8 @@ export class ListPizzaSizeModel{
     get getList(){
         return this.#list.slice();
     }
+
+    getItem(id){
+        return this.#list.find(element => element.id == id);
+    }
 }

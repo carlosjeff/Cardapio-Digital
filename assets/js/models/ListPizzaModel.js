@@ -9,4 +9,8 @@ export class ListPizzaModel{
     add(model){
         this.#list.push(model);
     }
+
+    getItem(id){
+        return this.#list.find(item => item.id === id);
+    }
 }

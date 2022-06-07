@@ -13,9 +13,28 @@ export class PizzaView {
         this.#element.innerHTML = this.#template(model);
     }
 
-    updateListSize(model){
+    updateListSize(model, page = 1){
      
-        this.#element.querySelector('#pizza-size .list').innerHTML = this.#listSize(model)
+        this.#element.querySelector('#pizza-size .list').innerHTML = this.#listSize(model, page)
+
+    }
+
+    addOrEdit(type, element){
+        const button = {
+            add(elementButton){
+                elementButton.innerText = 'Salvar'
+                elementButton.classList.remove('button-blue','icon-edit')
+                elementButton.classList.add('button-green','icon-check')
+                
+            },
+            edit(elementButton){
+                elementButton.innerText = 'Editar'
+                elementButton.classList.remove('button-green','icon-check')
+                elementButton.classList.add('button-blue','icon-edit')
+            }
+        }
+        
+        button[type](element);
     }
 
     #template(model) {
@@ -93,12 +112,12 @@ export class PizzaView {
                     <label class="input__label" for="description">Descrição</label>
                     <textarea type="text" id="description" class="input" rows="8"></textarea>
                 </div>
-                <button type="button" id="submit-size" class="button button-green button-icon-text icon-check form-submit">Salvar</button>
+                <button type="button" id="submit-size" class="button button-icon-text button-green icon-check form-submit">Salvar</button>
             </form>
         `
     }
 
-    #listSize(model){
+    #listSize(model,page){
 
         return `
                 <li class="list__header">
@@ -107,13 +126,13 @@ export class PizzaView {
                         <i class="input-icon icon-search"></i>
                     </div>
                 </li>
-                ${model.length > 0 ? model.map(item => 
+                ${model.length > 0 ? model.slice((4 * page) - 4, 4 * page).map(item => 
                         `
-                        <li class="list__row">
+                        <li class="list__row" id="${item.id}">
                             <div class="col-1">${item.name}</div>
                             <div class="col-2">R$ ${MaskHelper.priceToDecimal(item.price)}</div>
                             <div class="col-3">
-                                <button class="button button-icon icon-edit button-blue"></button>
+                                <button class="edit button button-icon icon-edit button-blue"></button>
                                 <button class="button button-icon icon-trash button-red"></button>
                             </div>
                         </li>

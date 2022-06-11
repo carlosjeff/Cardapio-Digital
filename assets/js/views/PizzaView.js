@@ -146,11 +146,19 @@ export class PizzaView {
                 }
                 <li class="list__footer">
                     <button class="button button-icon icon-arrow-left button-white"></button>
-                    <button class="button button-white">1</button>
+                    ${this.#pageNavigationButtons(model, page)}
                     <button class="button button-icon icon-arrow-right button-white"></button>
                 </li>
         `
     }
 
+    #pageNavigationButtons(model, page){
+        let totalPages = Math.ceil(model.length / 4)
+        let array = []
+        for (let index = 1; index <= totalPages ; index++) {
+            array.push(`<button class="button button-white button-page">${index}</button>`)
+        }
+        return array.join('');
+    }
     
 }

@@ -34,6 +34,17 @@
     color: var(--grey-50);
 }
 
+.button-bluegrey-dark:hover{
+    background-color: var(--grey-50);
+    color: var(--bluegrey-900);
+    cursor: pointer;
+}
+
+.button-bluegrey-dark{
+    background-color: var(--bluegrey-800);
+    color: var(--grey-50);
+}
+
 .button-blue:hover{
     background-color: var(--blue-900);
     cursor: pointer;

@@ -4,9 +4,11 @@ import {ListPizzaSizeModel} from '../models/ListPizzaSizeModel.js'
 export class PizzaView {
 
     #element
+    #page
 
     constructor(element) {
         this.#element = element;
+        this.#page = 1
     }
 
     init(model){
@@ -14,8 +16,8 @@ export class PizzaView {
     }
 
     updateListSize(model, page = 1){
-     
-        this.#element.querySelector('#pizza-size .list').innerHTML = this.#listSize(model, page)
+        this.#page = page;
+        this.#element.querySelector('#pizza-size .list').innerHTML = this.#listSize(model)
 
     }
 
@@ -117,7 +119,7 @@ export class PizzaView {
         `
     }
 
-    #listSize(model,page){
+    #listSize(model){
 
         return `
                 <li class="list__header">
@@ -126,7 +128,7 @@ export class PizzaView {
                         <i class="input-icon icon-search"></i>
                     </div>
                 </li>
-                ${model.length > 0 ? model.slice((4 * page) - 4, 4 * page).map(item => 
+                ${model.length > 0 ? model.slice((4 * this.#page) - 4, 4 * this.#page).map(item => 
                         `
                         <li class="list__row" id="${item.id}">
                             <div class="col-1">${item.name}</div>
@@ -146,17 +148,19 @@ export class PizzaView {
                 }
                 <li class="list__footer">
                     <button class="button button-icon icon-arrow-left button-white"></button>
-                    ${this.#pageNavigationButtons(model, page)}
+                    ${this.#pageNavigationButtons(model)}
                     <button class="button button-icon icon-arrow-right button-white"></button>
                 </li>
         `
     }
 
-    #pageNavigationButtons(model, page){
+    #pageNavigationButtons(model){
+        
         let totalPages = Math.ceil(model.length / 4)
         let array = []
         for (let index = 1; index <= totalPages ; index++) {
-            array.push(`<button class="button button-white button-page">${index}</button>`)
+            if(index >= (this.#page - 2 ) && index <= (this.#page + 2 ))
+                array.push(`<button class="button ${index == this.#page ? 'button-bluegrey-dark' : 'button-white'} button-page">${index}</button>`)
         }
         return array.join('');
     }

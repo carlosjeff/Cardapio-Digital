@@ -16,6 +16,14 @@ export class PizzaSizeService{
             })
     }
 
+    edit(model){
+        return ConnectionFactory
+            .getConnection()
+            .then(connection => new PizzaSizeDao(connection))
+            .then(dao => dao.edit(model))
+            .catch(err => {throw new Error(err)});
+    }
+
     getAll(){
         return ConnectionFactory
             .getConnection()

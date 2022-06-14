@@ -39,6 +39,26 @@ export class PizzaSizeDao{
         })
     }
 
+    edit(model){
+        return new Promise((resolve, reject) => {
+
+            let request = this.#connection
+            .transaction([this.#store], 'readwrite')
+            .objectStore(this.#store)
+            .put(this.#criaObjeto(model), parseInt(model.id));
+            request.onsuccess = e => {
+                resolve(model);
+            };
+
+            request.onerror = e => {
+
+                console.log(e.target.error);
+                reject('Não foi possível editar o Tamanho da Pizza!');
+            };
+        })
+    }
+
+
     listAll(){
         return new Promise((resolve, reject) => {
 

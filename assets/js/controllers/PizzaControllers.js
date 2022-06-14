@@ -38,7 +38,7 @@ export class PizzaControllers{
         this.#pizzaSizeService
             .getAll()
             .then(data => data.forEach(item => this.#listPizzaSizeModel.add(item)))
-            .then(() =>  this.#updateView()) 
+            .then(() =>  this.#pizzaView.updateListSize(this.#listPizzaSizeModel.getList)) 
             .then(() =>  this.#pageElements())
             .catch(err => console.log(err))
     }
@@ -71,6 +71,10 @@ export class PizzaControllers{
         this.#element.querySelectorAll('.list__row').forEach(row => {
             row.querySelector('.edit').addEventListener('click',e => this.edit(row.id))
         });
+
+        this.#element.querySelectorAll('.button-page').forEach(button => {
+            button.addEventListener('click',e => this.#updateView(e.target.innerText))
+        })
         
     }
 
@@ -114,8 +118,16 @@ export class PizzaControllers{
 
     update(event,id){
         event.preventDefault();
-        console.log('update')
+        let pizzaSize = this.#createObjPizzaSize(id);
+        this.#pizzaSizeService
+            .edit(pizzaSize)
+            .then(objet => this.#listPizzaSizeModel.update(objet))
+            .then(() => this.#clearForm())
+            .then(() =>  this.#updateView()) 
+        
     }
+
+
 
     #createObjPizzaSize(
         id = 0,
@@ -131,6 +143,7 @@ export class PizzaControllers{
     #clearForm(){
       this.#element.querySelector('.form-pizzaSize').reset();
       this.#submitSizeElement.value = 0;
+      this.#pizzaView.addOrEdit('add',this.#submitSizeElement);
     }
 
     #setInputPizzaSize(pizzaSize){
@@ -171,9 +184,8 @@ export class PizzaControllers{
         }
     }
 
-    #updateView(){
-        this.#pizzaView.updateListSize(this.#listPizzaSizeModel.getList);
+    #updateView(page = 1){
+        this.#pizzaView.updateListSize(this.#listPizzaSizeModel.getList,+page);
         this.#eventListenersList();
     }
-
 }

@@ -13,6 +13,11 @@ export class ListPizzaSizeModel{
        this.#list.splice(index, 1,model);
     }
 
+    remove(id){
+        let index = this.#list.findIndex(e => e.id == id);
+        this.#list.splice(index, 1);
+    }
+
     get getList(){
         return this.#list.slice();
     }

@@ -6,7 +6,7 @@
 @import url(./components/list.css);
 @import url(./components/button.css);
 @import url(./components/form.css);
-
+@import url(./components/confirmDialog.css);
 .main {
     grid-column: 2;
     display: grid;

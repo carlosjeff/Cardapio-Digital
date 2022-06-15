@@ -24,6 +24,14 @@ export class PizzaSizeService{
             .catch(err => {throw new Error(err)});
     }
 
+    delete(id){
+        return ConnectionFactory
+            .getConnection()
+            .then(connection => new PizzaSizeDao(connection))
+            .then(dao => dao.delete(id))
+            .catch(err => {throw new Error(err)});
+    }
+
     getAll(){
         return ConnectionFactory
             .getConnection()

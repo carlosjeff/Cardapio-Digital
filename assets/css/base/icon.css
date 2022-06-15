@@ -68,3 +68,8 @@
     font-family: var(--font-icon);
 }
 
+.icon-exit::before{
+    content:"\f00d" !important;
+    font-family: var(--font-icon);
+}
+

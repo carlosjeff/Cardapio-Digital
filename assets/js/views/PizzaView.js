@@ -135,7 +135,7 @@ export class PizzaView {
                             <div class="col-2">R$ ${MaskHelper.priceToDecimal(item.price)}</div>
                             <div class="col-3">
                                 <button class="edit button button-icon icon-edit button-blue"></button>
-                                <button class="button button-icon icon-trash button-red"></button>
+                                <button class="delete button button-icon icon-trash button-red"></button>
                             </div>
                         </li>
                         `

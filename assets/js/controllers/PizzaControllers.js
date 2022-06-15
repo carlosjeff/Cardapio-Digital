@@ -3,6 +3,7 @@ import { PizzaSizeModel } from './../models/PizzaSizeModel.js';
 import {MaskHelper} from '../helpers/MaskHelper.js'
 import {ListPizzaSizeModel} from '../models/ListPizzaSizeModel.js'
 import { PizzaSizeService } from '../services/PizzaSizeService.js'
+import {ConfirmDialogView} from '../views/ConfirmDialogView.js'
 
 export class PizzaControllers{
 
@@ -70,6 +71,7 @@ export class PizzaControllers{
     #eventListenersList(){
         this.#element.querySelectorAll('.list__row').forEach(row => {
             row.querySelector('.edit').addEventListener('click',e => this.edit(row.id))
+            row.querySelector('.delete').addEventListener('click',e => this.delete(e,row.id))
         });
 
         this.#element.querySelectorAll('.button-page').forEach(button => {
@@ -127,7 +129,16 @@ export class PizzaControllers{
         
     }
 
-
+    delete(event,id){
+        event.preventDefault();
+        new ConfirmDialogView()
+            .open('Tem ceteza que deseja excluir o item selecionado?')
+            .then(() =>  this.#pizzaSizeService.delete(id))
+            .then(() => this.#listPizzaSizeModel.remove(id))
+            .then(() =>  this.#updateView())
+            .catch(() => console.log('fechar'))
+            .finally(() => console.log('teste'));
+    }
 
     #createObjPizzaSize(
         id = 0,

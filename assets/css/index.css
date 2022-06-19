@@ -7,8 +7,11 @@
 @import url(./components/button.css);
 @import url(./components/form.css);
 @import url(./components/confirmDialog.css);
-.main {
+@import url(./components/toast.css);
+.main{
     grid-column: 2;
     display: grid;
     grid-template-rows: 60px auto;
 }
+
+

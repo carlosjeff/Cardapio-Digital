@@ -25,4 +25,9 @@ export class ListPizzaSizeModel{
     getItem(id){
         return this.#list.find(element => element.id == id);
     }
+
+    filter(value = ''){
+        let filter = value.trim().toLowerCase();
+        return this.#list.filter(element => element.name.toLowerCase().indexOf(filter) > -1);
+    }
 }

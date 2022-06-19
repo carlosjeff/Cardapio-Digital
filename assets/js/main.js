@@ -1,5 +1,5 @@
-import {PizzaControllers} from './controllers/PizzaControllers.js';
+import { PizzaController } from './controllers/PizzaController.js';
 
 let elementMain = document.querySelector('#content-main');
 
-let pizzaControllers = new PizzaControllers(elementMain);
+let pizzaControllers = new PizzaController(elementMain);

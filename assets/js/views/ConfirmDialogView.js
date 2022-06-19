@@ -3,6 +3,7 @@ export class ConfirmDialogView{
     #element;
 
     constructor() {
+        this.#element;
     }
 
     open(message) {

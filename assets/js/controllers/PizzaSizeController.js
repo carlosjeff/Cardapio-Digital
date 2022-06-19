@@ -1,11 +1,12 @@
-import { PizzaView } from '../views/PizzaView.js'
-import { PizzaSizeModel } from './../models/PizzaSizeModel.js';
+import { PizzaSizeView } from '../views/PizzaSizeView.js'
+import { PizzaSizeModel } from '../models/PizzaSizeModel.js';
 import {MaskHelper} from '../helpers/MaskHelper.js'
 import {ListPizzaSizeModel} from '../models/ListPizzaSizeModel.js'
 import { PizzaSizeService } from '../services/PizzaSizeService.js'
 import {ConfirmDialogView} from '../views/ConfirmDialogView.js'
+import {ToastView} from '../views/ToastView.js'
 
-export class PizzaControllers{
+export class PizzaSizeController{
 
     #element;
     #inputNameSizeElement;
@@ -16,6 +17,7 @@ export class PizzaControllers{
     #submitSizeElement;
 
     #pizzaView;
+    #toastView
 
     #listPizzaSizeModel;
 
@@ -28,13 +30,14 @@ export class PizzaControllers{
 
         this.#listPizzaSizeModel = new ListPizzaSizeModel();
 
-        this.#pizzaView = new PizzaView(this.#element);
-
-        this.#init();
-       
+        this.#pizzaView = new PizzaSizeView(this.#element);
+        this.#toastView = new ToastView();
+        this.#init()
     }
 
     #init(){
+        
+
         this.#pizzaView.init(this.#listPizzaSizeModel.getList);
         this.#pizzaSizeService
             .getAll()
@@ -69,13 +72,29 @@ export class PizzaControllers{
     }
 
     #eventListenersList(){
-        this.#element.querySelectorAll('.list__row').forEach(row => {
-            row.querySelector('.edit').addEventListener('click',e => this.edit(row.id))
-            row.querySelector('.delete').addEventListener('click',e => this.delete(e,row.id))
+        let filterDelay;
+
+        this.#element.querySelector('#filterSizePizza').addEventListener('input', e => {
+            clearTimeout(filterDelay);
+            filterDelay = setTimeout(() => this.filterListPizzaSize(e.target.value),1000)
         });
 
-        this.#element.querySelectorAll('.button-page').forEach(button => {
-            button.addEventListener('click',e => this.#updateView(e.target.innerText))
+        this.#element.querySelectorAll('.list__row').forEach(row => {
+            row.querySelector('.edit') && row.querySelector('.edit').addEventListener('click',e => this.edit(row.id))
+            row.querySelector('.delete') && row.querySelector('.delete').addEventListener('click',e => this.delete(e,row.id))
+        });
+
+        this.#element.querySelectorAll('.list__footer .button').forEach(button => {
+           
+            if(+button.innerText > 0){
+                button.addEventListener('click',e => this.#updateView(e.target.innerText))
+            }else{
+                const page = +this.#element.querySelector('.list__footer .button-bluegrey-dark').innerText
+                button.classList.contains('icon-arrow-left') && button.addEventListener('click',e => 
+                    this.#updateView(page - 1))
+                button.classList.contains('icon-arrow-right') && button.addEventListener('click',e => 
+                    this.#updateView(page + 1))
+            }
         })
         
     }
@@ -108,10 +127,14 @@ export class PizzaControllers{
             .add(pizzaSize)
             .then(objet => this.#listPizzaSizeModel.add(objet))
             .then(() => this.#clearForm())
-            .then(() =>  this.#updateView())       
+            .then(() =>  this.#updateView())
+            .then(() => this.#toastView.add('create'))
+            .catch(err => console.log('error',err))
+            .catch(() => this.#toastView.add('error'));    
     }
 
     edit(id){
+       
         let pizzaSize = this.#listPizzaSizeModel.getItem(id);
         this.#setInputPizzaSize(pizzaSize);
         this.#pizzaView.addOrEdit('edit',this.#submitSizeElement)
@@ -125,7 +148,10 @@ export class PizzaControllers{
             .edit(pizzaSize)
             .then(objet => this.#listPizzaSizeModel.update(objet))
             .then(() => this.#clearForm())
-            .then(() =>  this.#updateView()) 
+            .then(() => this.#updateView())
+            .then(() => this.#toastView.add('update'))
+            .catch(err => console.log('error',err))
+            .catch(() => this.#toastView.add('error'));
         
     }
 
@@ -136,8 +162,18 @@ export class PizzaControllers{
             .then(() =>  this.#pizzaSizeService.delete(id))
             .then(() => this.#listPizzaSizeModel.remove(id))
             .then(() =>  this.#updateView())
-            .catch(() => console.log('fechar'))
-            .finally(() => console.log('teste'));
+            .then(() => this.#toastView.add('delete')) 
+            .catch(err => console.log('error',err))
+            .catch(() => this.#toastView.add('error'));
+    }
+
+    filterListPizzaSize(value){
+        if(value){
+            let list = this.#listPizzaSizeModel.filter(value)
+            this.#updateView(1,list)
+        }else{
+            this.#updateView(1)
+        }
     }
 
     #createObjPizzaSize(
@@ -195,8 +231,8 @@ export class PizzaControllers{
         }
     }
 
-    #updateView(page = 1){
-        this.#pizzaView.updateListSize(this.#listPizzaSizeModel.getList,+page);
+    #updateView(page = 1,list = this.#listPizzaSizeModel.getList){
+        this.#pizzaView.updateListSize(list, +page);
         this.#eventListenersList();
     }
 }

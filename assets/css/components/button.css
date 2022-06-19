@@ -12,6 +12,11 @@
     cursor: pointer;
 }
 
+.button:disabled ,.button:disabled:hover{
+    opacity: 0.6;
+    cursor: default;
+}
+
 .button-icon::before{
     content: "";
     font-size: 1rem;

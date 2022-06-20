@@ -1,7 +1,7 @@
 import { PizzaSizeView } from '../views/PizzaSizeView.js'
-import { PizzaSizeModel } from '../models/PizzaSizeModel.js';
+import { PizzaSizeModel } from '../models/PizzaSize/PizzaSizeModel.js';
 import {MaskHelper} from '../helpers/MaskHelper.js'
-import {ListPizzaSizeModel} from '../models/ListPizzaSizeModel.js'
+import {ListPizzaSizeModel} from '../models/PizzaSize/ListPizzaSizeModel.js'
 import { PizzaSizeService } from '../services/PizzaSizeService.js'
 import {ConfirmDialogView} from '../views/ConfirmDialogView.js'
 import {ToastView} from '../views/ToastView.js'

@@ -1,7 +1,8 @@
 export class ListPizzaSizeModel{
-    #list = [];
+    #list;
 
     constructor() {
+        this.#list = []
     }
 
     add(model){

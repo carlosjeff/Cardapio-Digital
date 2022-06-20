@@ -1,4 +1,4 @@
-import {ListToastModel} from '../models/ListToastModel.js'
+import {ListToastModel} from '../models/Toast/ListToastModel.js'
 
 export class ToastView{
 

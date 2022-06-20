@@ -1,4 +1,4 @@
-import { PizzaSizeModel } from '../models/PizzaSizeModel.js'
+import { PizzaSizeModel } from '../models/PizzaSize/PizzaSizeModel.js'
 
 export class PizzaSizeDao{
 

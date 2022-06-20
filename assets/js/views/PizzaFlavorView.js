@@ -1,11 +1,10 @@
-import {MaskHelper} from '../helpers/MaskHelper.js'
-import {ListPizzaSizeModel} from '../models/PizzaSize/ListPizzaSizeModel.js'
+export class PizzaFlavorView{
 
-export class PizzaSizeView {
+    #element;
 
-    #element
-    #page
+    #page;
     #totalPages;
+
 
     constructor(element) {
         this.#element = element;
@@ -14,76 +13,37 @@ export class PizzaSizeView {
     }
 
     init(model){
-        this.#element.innerHTML = this.#template(model);
+        this.#element.innerHTML = this.#template(model)
     }
 
-    updateListSize(model, page = 1){
-        this.#totalPages = Math.ceil(model.length / 4)
-        this.#page = page < 1 ? 1 : page > this.totalPages ? this.totalPages : page;
-        this.#element.querySelector('#pizza-size .list__content').innerHTML = this.#listSize(model)
-
-    }
-
-    addOrEdit(type, element){
-        const button = {
-            add(elementButton){
-                elementButton.innerText = 'Salvar'
-                elementButton.classList.remove('button-blue','icon-edit')
-                elementButton.classList.add('button-green','icon-check')
-                
-            },
-            edit(elementButton){
-                elementButton.innerText = 'Editar'
-                elementButton.classList.remove('button-green','icon-check')
-                elementButton.classList.add('button-blue','icon-edit')
-            }
-        }
-        
-        button[type](element);
-    }
-
-    #template(model) {
+    #template(model){
 
         return `
-                    ${this.#formSize()}
+                    ${this.#form()}
                     <div class="list">
                         <div class="list__header">
                             <div class="list__search">
-                                <input type="text" class="input input-filter" id="filterSizePizza">
+                                <input type="text" class="input input-filter" id="filterFlavorPizza">
                                 <i class="input-icon icon-search"></i>
                             </div>
                         </div>
                         <ul class="list__content">
                         
-                            ${this.#listSize(model)}
+                           ${this.#list(model)}
                         </ul>
                     </div>
                
         `
     }
 
-    #formSize(){
+
+    
+    #form(){
         return `
-            <form class="form form-pizzaSize">
+            <form class="form form-pizzaFlavor">
                 <div class="form__input">
                     <label class="input__label" for="name">Nome</label>
                     <input type="text" id="name" class="input">
-                </div>
-                <div class="form__input">
-                    <label class="input__label" for="price">Preço</label>
-                    <input type="text" id="price" value="R$ 0,00" class="input input-number">
-                </div>
-                <div class="form__input input-number">
-                    <label class="input__label" for="limitFlavor">Limite de Sabores</label>
-                    <input type="text" id="limitFlavor" class="input" value="0">
-                    <button class="buttonUpNumber button-icon icon-plus button-bluegrey"></button>
-                    <button class="buttonDownNumber button-icon icon-minus button-bluegrey"></button>  
-                </div>
-                <div class="form__input input-number">
-                    <label class="input__label" for="limitEdge">Limite de Bordas</label>
-                    <input type="text" id="limitEdge" class="input" value="0">
-                    <button class="buttonUpNumber button-icon icon-plus button-bluegrey"></button>
-                    <button class="buttonDownNumber button-icon icon-minus button-bluegrey"></button>
                 </div>
                 <div class="form__input">
                     <label class="input__label" for="description">Descrição</label>
@@ -96,14 +56,13 @@ export class PizzaSizeView {
 
 
 
-    #listSize(model){
+    #list(model){
 
         return `    
                 ${model.length > 0 ? model.slice((4 * this.#page) - 4, 4 * this.#page).map(item => 
                         `
                         <li class="list__row" id="${item.id}">
                             <div class="col-1">${item.name}</div>
-                            <div class="col-2">R$ ${MaskHelper.priceToDecimal(item.price)}</div>
                             <div class="col-3">
                                 <button class="edit button button-icon icon-edit button-blue"></button>
                                 <button class="delete button button-icon icon-trash button-red"></button>
@@ -134,5 +93,4 @@ export class PizzaSizeView {
         }
         return array.join('');
     }
-    
 }

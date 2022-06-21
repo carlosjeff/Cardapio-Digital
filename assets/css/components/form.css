@@ -4,7 +4,7 @@
 }
 
 .form-pizzaSize{
-    grid-template-rows: 90px 90px 90px auto auto;
+    grid-template-rows: 90px 90px 90px auto 50px;
     grid-template-columns: 1fr 1fr;
     column-gap: 1em;
 }
@@ -21,8 +21,13 @@
   grid-column: 2 !important;
 }
 
+.form-pizzaSize .form-submit{
+  align-self: center;
+}
+
+
 .form-pizzaFlavor{
-    grid-template-rows: 90px auto auto;
+    grid-template-rows: 90px auto 50px;
     grid-template-columns: 100%;
 }
 
@@ -32,6 +37,10 @@
 
 .form-pizzaFlavor .form__input:nth-child(2){
   grid-row: 2 !important;
+}
+
+.form-pizzaFlavor .form-submit{
+  align-self: center;
 }
 
 

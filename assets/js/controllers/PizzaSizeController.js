@@ -104,14 +104,14 @@ export class PizzaSizeController{
         this.#inputPriceSizeElement.addEventListener('input',e => this.#maskInput(e, 'price'));
         this.#inputLimitEdgeSizeElement.addEventListener('input',e => this.#maskInput(e, 'limit'))
         this.#inputLimitFlavorSizeElement.addEventListener('input',e => this.#maskInput(e, 'limit'));
-
-        let paterInputLimitEdgeSize =  this.#inputLimitEdgeSizeElement.offsetParent;
+       
+        let paterInputLimitEdgeSize =  this.#inputLimitEdgeSizeElement.parentNode;
         paterInputLimitEdgeSize.querySelector('.buttonUpNumber')
             .addEventListener('click',e => this.#addOrSubtrac(e,this.#inputLimitEdgeSizeElement))
         paterInputLimitEdgeSize.querySelector('.buttonDownNumber')
             .addEventListener('click',e => this.#addOrSubtrac(e,this.#inputLimitEdgeSizeElement))
 
-        let paterInputLimitFlavorSize = this.#inputLimitFlavorSizeElement.offsetParent;
+        let paterInputLimitFlavorSize = this.#inputLimitFlavorSizeElement.parentNode;
         paterInputLimitFlavorSize.querySelector('.buttonUpNumber')
             .addEventListener('click',e => this.#addOrSubtrac(e,this.#inputLimitFlavorSizeElement))
         paterInputLimitFlavorSize.querySelector('.buttonDownNumber')
@@ -142,6 +142,7 @@ export class PizzaSizeController{
     }
 
     update(event,id){
+        console.log(event,id);
         event.preventDefault();
         let pizzaSize = this.#createObjPizzaSize(id);
         this.#pizzaSizeService

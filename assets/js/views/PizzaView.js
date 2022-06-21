@@ -26,7 +26,7 @@ export class PizzaView{
     #template(){
 
         return `
-            <div class="accordion" id="pizza-size">
+            <div class="accordion accordion-disabled" id="pizza-size">
                 <div class="accordion__action">
                     <h2 class="acordion__title">Tamanho</h2>
                     <i class="accordion__icon icon-arrow-up"></i>
@@ -35,7 +35,7 @@ export class PizzaView{
                    
                 </div>
             </div>
-            <div class="accordion accordion-disabled" id="pizza-flavor">
+            <div class="accordion " id="pizza-flavor">
                 <div class="accordion__action">
                     <h2 class="acordion__title">Sabores</h2>
                     <i class="accordion__icon icon-arrow-down"></i>

@@ -43,13 +43,13 @@ export class PizzaFlavorView{
             <form class="form form-pizzaFlavor">
                 <div class="form__input">
                     <label class="input__label" for="name">Nome</label>
-                    <input type="text" id="name" class="input">
+                    <input type="text" id="name-flavor" class="input">
                 </div>
                 <div class="form__input">
                     <label class="input__label" for="description">Descrição</label>
-                    <textarea type="text" id="description" class="input" rows="8"></textarea>
+                    <textarea type="text" id="description-flavor" class="input" rows="10"></textarea>
                 </div>
-                <button type="button" id="submit-size" class="button button-icon-text button-green icon-check form-submit">Salvar</button>
+                <button type="button" id="submit-flavor" class="button button-icon-text button-green icon-check form-submit">Salvar</button>
             </form>
         `
     }

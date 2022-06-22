@@ -1,5 +1,6 @@
 import { PizzaFlavorView } from '../views/PizzaFlavorView.js'
 import { ListPizzaFlavorModel } from '../models/PizzaFlavor/ListPizzaFlavorModel.js'
+import { PizzaFlavorService } from '../services/PizzaFlavorService.js';
 
 export class PizzaFlavorController{
 
@@ -13,16 +14,25 @@ export class PizzaFlavorController{
 
     #PizzaView;
 
+    #pizzaFlavorService;
+
 
     constructor(element) {
         this.#element = element;
+
+        this.#pizzaFlavorService = new PizzaFlavorService();
 
         this.#PizzaView = new PizzaFlavorView(element);
 
         this.#listPizzaFlavorModel = new ListPizzaFlavorModel();
 
-        this.#PizzaView.init(this.#listPizzaFlavorModel.getList);
-        this.#pageElements()
+        
+        this.#pizzaFlavorService
+            .getAll()
+            .then(data => data.forEach(item => this.#listPizzaFlavorModel.add(item)))
+            .then(() => this.#PizzaView.init(this.#listPizzaFlavorModel.getList))
+            .then(() => this.#pageElements())
+            .catch(err => console.log(err));        
     }
 
 

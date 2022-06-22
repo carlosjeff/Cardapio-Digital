@@ -1,5 +1,5 @@
-const stores = ['pizza-size'];
-const version = 1;
+const stores = ['pizza-size','pizza-flavor'];
+const version = 2;
 const dbName = 'CardapioVirtual';
 
 let connection = null

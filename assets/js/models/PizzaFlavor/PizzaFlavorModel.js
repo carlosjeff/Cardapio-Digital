@@ -1,12 +1,18 @@
 //Sabor
 export class PizzaFlavorModel{
 
+    #id;
     #name;
     #description;
 
-    constructor(name, description) {
+    constructor(id, name, description) {
+        this.#id = id;
         this.#name = name;
         this.#description = description;
+    }
+
+    get id(){
+        return this.#id;
     }
 
     get name(){

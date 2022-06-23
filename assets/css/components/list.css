@@ -77,6 +77,10 @@
     align-self: center;
 }
 
+.col-span-2{
+    grid-column: span 2;
+}
+
 .col{
     grid-column: span 3;
     justify-self:  center;

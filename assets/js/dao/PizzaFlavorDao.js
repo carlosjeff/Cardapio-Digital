@@ -1,4 +1,5 @@
 import { PizzaFlavorModel } from '../models/PizzaFlavor/PizzaFlavorModel.js'
+import { DataDao } from './DataDao.js';
 
 export class PizzaFlavorDao{
 

@@ -9,7 +9,7 @@ export class ToastModel{
         this.#type = type;
         this.#title = title;
         this.#message = message;
-        this.#id
+        this.#id = id
     }
 
     get type() { return this.#type; }

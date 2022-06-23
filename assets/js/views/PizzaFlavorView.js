@@ -36,6 +36,30 @@ export class PizzaFlavorView{
         `
     }
 
+    updateListSize(model, page = 1){
+        this.#totalPages = model.length > 0 ? Math.ceil(model.length / 4) : 1;
+        this.#page = page < 1 ? 1 : page > this.totalPages ? this.totalPages : page;
+        this.#element.querySelector('.list__content').innerHTML = this.#list(model)
+
+    }
+
+    addOrEdit(type, element){
+        const button = {
+            add(elementButton){
+                elementButton.innerText = 'Salvar'
+                elementButton.classList.remove('button-blue','icon-edit')
+                elementButton.classList.add('button-green','icon-check')
+                
+            },
+            edit(elementButton){
+                elementButton.innerText = 'Editar'
+                elementButton.classList.remove('button-green','icon-check')
+                elementButton.classList.add('button-blue','icon-edit')
+            }
+        }
+        
+        button[type](element);
+    }
 
     
     #form(){
@@ -62,7 +86,7 @@ export class PizzaFlavorView{
                 ${model.length > 0 ? model.slice((4 * this.#page) - 4, 4 * this.#page).map(item => 
                         `
                         <li class="list__row" id="${item.id}">
-                            <div class="col-1">${item.name}</div>
+                            <div class="col-span-2 col-1">${item.name}</div>
                             <div class="col-3">
                                 <button class="edit button button-icon icon-edit button-blue"></button>
                                 <button class="delete button button-icon icon-trash button-red"></button>

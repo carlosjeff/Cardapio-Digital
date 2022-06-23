@@ -23,15 +23,14 @@ export class ToastView{
         
         const id = this.#listTost.generateId();
         this.#listTost[type](id);
-        console.log(this.#listTost.list)
 
-        this.#element.innerHTML = this.#template(id);
+        this.#element.innerHTML = this.#template();
 
         let time = setTimeout(() => {
             this.#delete(id)
-        }, 2000);
+        }, 1000);
 
-        this.#element.querySelector(`#${id} button`).addEventListener('click', () => {
+        this.#element.querySelector(`#toast-${id} button`).addEventListener('click', () => {
             clearTimeout(time);
             this.#delete(id);
         })
@@ -39,9 +38,9 @@ export class ToastView{
         
     }
 
-    #template(id){
+    #template(){
         let list = this.#listTost.list.map(t => ` 
-            <div class="tost__content tost-${t.type}" id="${id}">
+            <div class="tost__content tost-${t.type}" id="toast-${t.id}">
                 <i class="tost__icon ${this.#typeIcon(t.type)}"></i>
                 <h2 class="tost__title">${t.title}</h2>
                 <p class="tost__text">${t.message}</p>
@@ -53,7 +52,7 @@ export class ToastView{
     }
 
     #delete(id){
-        document.querySelector('#' + id).remove();
+        document.querySelector(`#toast-${id}`)?.remove();
         this.#listTost.remove(id);
     }
 

@@ -85,7 +85,6 @@ export class PizzaSizeController{
         });
 
         this.#element.querySelectorAll('.list__footer .button').forEach(button => {
-           
             if(+button.innerText > 0){
                 button.addEventListener('click',e => this.#updateView(e.target.innerText))
             }else{

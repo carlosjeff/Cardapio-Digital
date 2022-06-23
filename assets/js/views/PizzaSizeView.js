@@ -18,9 +18,9 @@ export class PizzaSizeView {
     }
 
     updateListSize(model, page = 1){
-        this.#totalPages = Math.ceil(model.length / 4)
+        this.#totalPages = model.length > 0 ? Math.ceil(model.length / 4) : 1;
         this.#page = page < 1 ? 1 : page > this.totalPages ? this.totalPages : page;
-        this.#element.querySelector('#pizza-size .list__content').innerHTML = this.#listSize(model)
+        this.#element.querySelector('.list__content').innerHTML = this.#listSize(model)
 
     }
 

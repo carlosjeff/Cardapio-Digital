@@ -38,14 +38,14 @@ export class ListToastModel{
 
     generateId(){
         let id;
-        for (let index = 0; index == 100; index++) {
+        for (let index = 0; index <= 100; index++) {
             id = parseInt(Math.random() * 100);
             if(!this.#list.find(e => e.id == id)){
-                break;
+                return id;
             }
         }
-
-        return id;
+       
+        
     }
 
 
